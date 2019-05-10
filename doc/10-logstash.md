@@ -1,6 +1,6 @@
 # Logstash configuration #
 
-If you want a simple Logstash instance that just reveices logs from [filebeat](20-filebeat) and writes them to Elasticsearch you can use the following configuration.
+If you want a simple Logstash instance that just reveices logs from [filebeat](20-filebeat.md) and writes them to Elasticsearch you can use the following configuration.
 
 Keep in mind that you're always free to build more configuration and more pipelines for different kinds of logs. This configuration should get you started but you are not restricted to use this Logstash instance just for Icinga.
 
@@ -21,7 +21,7 @@ Clone this repository into `/etc/logstash/conf.d/icinga/*conf`
 
 ## Shipper ##
 
-To receive the logs from [Filebeat](20-filebeat) you can use the following configuration in `/etc/logstash/conf.d/shipper/shipper.conf`.
+To receive the logs from [Filebeat](20-filebeat.md) you can use the following configuration in `/etc/logstash/conf.d/shipper/shipper.conf`.
 
 ```
 input {

@@ -12,4 +12,4 @@ For ease of use this pipeline will read from a Redis instance listening on local
 
 After processing the pipeline places the parsed logs into the same Redis instance but in key `forwarder`. If you don't like this behaviour feel free to change the files `input.conf` and `output.conf`.
 
-If you need a jumpstart, this docs show you a simple configuration for [Filebeat](doc/20-filebeat) and [Logstash](doc/10-logstash).
+If you need a jumpstart, this docs show you a simple configuration for [Filebeat](doc/20-filebeat.md) and [Logstash](doc/10-logstash.md).
