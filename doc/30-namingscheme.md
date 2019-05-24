@@ -74,8 +74,12 @@ At the end of this documentation is a list of all subfields of [icinga] used unt
 
 ### Used fieldnames
 
+When contributing to this project, run this command and replace the fieldnames used with its output. 
+
+```sh
+grep -Pho "\[icinga\]\[[^\[]*?\]" filter-* | sort -u | sed -e "s@\[icinga\]\[@@;s@\]@,@" | sed ':a;N;$!ba;s/\n/ /g' | sed -e "s/,$//"
+```
+
 These are all fieldnames in use for filter-50-configs to date:
 
-*port, bytes, messagecount, objectname, objecttype, filecount, epohcurrent, clientendport, direction, clienthost, clientport, zone, detail, remainingclients, message, logposition, currentmaster, connectedendpoints, path, listenerhost, notificationcount, checkoriginal, checknext, checkinterval, changetype, stateoriginal, statenew, idlecheckables, checkablesrate, checktime, statefile, nomessageduration, messagetype, clientendpoint, dbinstanceid, dbinstancescheme, notificationtype, username, notification, pluginpid, plugin, pluginarguments, pluginexitcode, pluginoutput, pid, signalcode, signaldetail, itemscount, itemsrate, items01min, items05min, items15min, sslerrordetails*
-
-
+*bytes, checkablespending, checkablesrate, checkinterval, checknext, checkoriginal, checktime, clientendpoint, clienthost, clientport, component, configfilecount, connectedendpoints, currentepoch, currentmaster, dbinstance, detail, direction, epochcurrent, epochreceived, errorcode, eventtype, facility, filecount, filterversion, idlecheckables, items01min, items05min, items15min, itemscount, itemsrate, listenerhost, logposition, message, messagecount, messagetype, nomessageduration, notification, notificationcount, notificationtype, object, objectdetails, objectname, objecttype, path, pid, plugin, port, pugin, receivedepoch, remainingclients, severity, signal, sslerrorcode, sslerrordetails, statefile, timestamp, username, workerdetail, workerfacility, workerid, zone*
