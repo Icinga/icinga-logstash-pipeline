@@ -1,6 +1,8 @@
 # Naming scheme
 This document will provide basic informations the naming scheme used within this project. It is essential to read, before contributing.
 
+The filters try to adhere to the [ECS](https://www.elastic.co/guide/en/ecs/1.0/index.html) field named. Those fields which are not covered by the ECS are described below. Please keep in mind that it's your responsibility to set the correct types of the fields if you want to use ECS. Most of them should be detected automatically in the right way, though.
+
 ### Basics
 The basics of the naming scheme are pretty easy and should be comprehended after taking a first glance at one of the config files.
 
@@ -26,15 +28,8 @@ The basic naming scheme is **[icinga]** + a constructed field name based on the 
 
 Examples for fieldnames by use:
 - [object]
-- [client]
-- [clients]
-- [host]
-- [hosts]
-- [port]
-- [ports]
 - [bytes]
 - [count]
-- [name]
 - [type]
 - [current]
 - [zone]
@@ -44,10 +39,8 @@ Examples for fieldnames by use:
 - [master]
 - [endpoint]
 - [endpoints]
-- [path]
 - [notification]
 - [check]
-- [file]
 - [type]
 - [state]
 
@@ -68,7 +61,7 @@ Sometimes additional fieldnames by use provide the context needed:
 [icinga][file] → [icinga][statefile]
 [icinga][type] → [icinga][objecttype]
 
-At the end of this documentation is a list of all subfields of [icinga] used until now. If at all possible, try to check if a field you want to use has been used before or check if similar fields to yours are used already and adjust accordingly to prevent confusing new fields.
+At the end of this documentation is a list of all subfields of [icinga] used until now. If at all possible, try to check if a field you want to use has been used before or check if similar fields to yours are used already and adjust accordingly to prevent confusing new fields. Before inventing new fields, please check the [ECS field reference](https://www.elastic.co/guide/en/ecs/1.0/index.html) if a fitting field is already defined.
 
 **Exception** Of course there are also unique fields, which are sadly necessary but should be avoided.
 
@@ -82,7 +75,7 @@ grep -Pho "\[icinga\]\[[^\[]*?\]" filter-* | sort -u | sed -e "s@\[icinga\]\[@@;
 
 These are all fieldnames in use for filter-50-configs to date:
 
-*agent, apirequest, apiuser, bytes, checkablespending, checkablesrate, checkinterval, checknext, checkoriginal, checktime, clientendpoint, clienthost, clientport, code, command, component, configfilecount, connectedendpoints, context, count, currentepoch, currentmaster, date, dateend, datestart, dbinstance, detail, direction, endtime, epochcurrent, epochreceived, errorcode, eventtype, exitcode, facility, filecount, filterversion, fstate, ftype, hostname, hostport, httpclientip, httpclientport, httpmethod, idlecheckables, items01min, items05min, items15min, itemscount, itemsrate, listenerhost, logposition, message, messagecount, messagetype, metriclist, name, nomessageduration, notification, notificationcount, notificationtype, object, objectdetails, objectname, objecttype, path, period, pid, pluginexitcode, pluginoutput, pluginpath, pluginpid, port, puginarguments, query, receivedepoch, remainingclients, severity, signalcode, signaldetail, sslerrorcode, sslerrordetails, starttime, state, statefile, statefilter, statefilterid, stride, timerange, timestamp, typefilter, typefilterid, user, username, weekday, workerdetail, workerfacility, workerid, zone*
+*apirequest, bytes, checkablespending, checkablesrate, checkinterval, checknext, checkoriginal, checktime, clientendpoint, code, command, component, configfilecount, connectedendpoints, context, count, currentepoch, currentmaster, date, dateend, datestart, dbinstance, detail, direction, endtime, epochcurrent, epochreceived, eventtype, exitcode, facility, filecount, filterversion, fstate, ftype, idlecheckables, items01min, items05min, items15min, itemscount, itemsrate, logposition, message, messagecount, messagetype, metriclist, name, nomessageduration, notification, notificationcount, notificationtype, object, objectdetails, objectname, objecttype, period, pluginarguments, pluginexitcode, pluginoutput, query, receivedepoch, remainingclients, severity, signalcode, signaldetail, sslerrorcode, sslerrordetails, starttime, state, statefilter, statefilterid, stride, timerange, timestamp, typefilter, typefilterid, weekday, workerdetail, workerfacility, workerid, zone*
 
 ### Arrays
 
