@@ -15,7 +15,7 @@ If you need a jumpstart, this docs show you a simple configuration for [Filebeat
 
 ## Capabilities ##
 
-The logs will be parsed and split into fields where we see a possible use. Field names are set according to Elastic Common Schema (ECS) wehere fit and stick to a nomenclature which should not interfere with your other field names. For details see the [docs](doc/doc/30-namingscheme.md). Short version: All fields which are not covered by ECS are subfields of the `icinga` field.
+The logs will be parsed and split into fields where we see a possible use. Field names are set according to Elastic Common Schema (ECS) wehere fit and stick to a nomenclature which should not interfere with your other field names. For details see the [docs](doc/30-namingscheme.md). Short version: All fields which are not covered by ECS are subfields of the `icinga` field.
 
 In the `dashboards` directory there are some sample dashboards you can use with this ruleset.
 
