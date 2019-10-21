@@ -77,10 +77,12 @@ These are all fieldnames in use for filter-50-configs to date:
 
 *apirequest, bytes, checkablespending, checkablesrate, checkinterval, checknext, checkoriginal, checktime, clientendpoint, code, command, component, configfilecount, connectedendpoints, context, count, currentepoch, currentmaster, date, dateend, datestart, dbinstance, detail, direction, endtime, epochcurrent, epochreceived, eventtype, exitcode, facility, filecount, filterversion, fstate, ftype, host, idlecheckables, items01min, items05min, items15min, itemscount, itemsrate, logposition, message, messagecount, messagetype, metriclist, name, nomessageduration, notificationcount, notificationtype, object, objectdetails, objectid, objecttype, period, pluginarguments, pluginexitcode, pluginoutput, query, receivedepoch, remainingclients, service, severity, signalcode, signaldetail, sslerrorcode, sslerrordetails, starttime, state, statefilter, statefilterid, stride, timerange, timestamp, typefilter, typefilterid, weekday, workerdetail, workerfacility, workerid, zone*
 
+The `main` field has `facility` as subfield. This was introduced into the `icinga` module in Filebeat due to changes for ECS compatibility. Since it's the only nested field in the `icinga` namespace, we won't change the detection script by now.
+
 ### Arrays
 
 We don't want to use arrays at all. Not just try to avoid them, please avoid them. We intend to use different fields for different data, which is key to logmanagement. If you really have to you can use yet another nested field *[icinga][nested][field]*, but even then the content should be related enough to combine them afterwards. This way we don't get an array, but string. The optimal solution of course is to use a [@metadata] field. 
 
 ### Contribution-Dashboard
 
-In this repository among other useful dashboards is a contribution.json, which provides a basic dashboard useful to identify areas which are in need of the most contribution. It gives you a nice overview of _grokparsefailures and undefined icinga.facility fields.
+In this repository among other useful dashboards is a contribution.json, which provides a basic dashboard useful to identify areas which are in need of the most contribution. It gives you a nice overview of _grokparsefailures and undefined icinga.main.facility fields.
