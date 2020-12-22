@@ -1,0 +1,31 @@
+---
+name: Logstash Syntax
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install gpg
+          wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+          echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+          sudo apt-get update
+          sudo apt-get install logstash
+          mkdir -p /tmp/logstash/data /tmp/logstash/logs
+
+      - name: Test with Logstash
+        run: |
+          /usr/share/logstash/bin/logstash  --path.settings /etc/logstash/ --path.config '*conf' --path.data /tmp/logstash/data --path.logs /tmp/logstash/logs --config.test_and_exit
