@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      max-parallel: 4
       matrix:
-        majorversion: [5, 6, 7]
+        logstashversion: [5, 6, 7]
 
     steps:
       - name: Check out code
@@ -25,7 +26,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install gpg
           wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-          echo "deb https://artifacts.elastic.co/packages/{{ majorversion }}.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-{{ majorversion }}.x.list
+          echo "deb https://artifacts.elastic.co/packages/${{ matrix.logstashversion }}.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic.list
           sudo apt-get update
           sudo apt-get install logstash
           mkdir -p /tmp/logstash/data /tmp/logstash/logs
