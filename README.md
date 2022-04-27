@@ -31,3 +31,31 @@ Icinga 2 is always changing and so are its logs. So we try to keep the rules as 
 In fact, the first version is not complete but it should be a good starting point.
 
 If you need more rules, feel free to change the files but please do send us a pull request so we can incorporate them so every use can benefit.
+
+## Inputs and Outputs ##
+
+If you use files called `input.conf` and `output.conf` they will not collide with this rules, even when you want to pull new versions.
+
+### Examples ###
+
+Here's an example for an `input.conf`
+
+```
+input {
+  redis {
+    data_type => list
+    key => icinga
+  }
+}
+```
+
+And an example for `output.conf`
+
+```
+output {
+  redis {
+    data_type => list
+    key => forwarder
+  }
+}
+```
